@@ -1,4 +1,5 @@
-"use client"; // Doit être placé tout en haut !
+// src/app/components/HacksOfCare.tsx
+"use client";
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -83,11 +84,11 @@ const hacks = [
 ];
 
 function HackCard({ hack, fontSize, autoReveal }: { hack: string; fontSize: string; autoReveal: boolean }) {
-  // Appel inconditionnel du hook
+  // Appel inconditionnel du hook useState
   const [revealed, setRevealed] = useState(false);
 
   if (autoReveal) {
-    // Mode mobile : révélation automatique dès que l'élément est dans le viewport
+    // Mode mobile : révélation automatique dès que l'élément est visible
     return (
       <motion.div
         variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
@@ -160,15 +161,10 @@ export default function HacksOfCare() {
   if (!isClient) return null;
 
   const isMobile = columns === 1;
-  // Pour ajuster l'espace entre le logo et la grille, modifiez gridTop
-  const gridTop = isMobile ? "10%" : "30%";
-  // Pour réduire l'espace entre les hacks sur mobile
-  const gridGap = isMobile ? "0.5rem" : "1rem";
-  // Pour ajouter de l'espace en bas afin que "Participer :" soit bien affiché
-  const gridHeight = isMobile ? "90%" : "65%";
+  const gridTop = isMobile ? "10%" : "30%"; // Espace entre le logo et la grille
+  const gridGap = isMobile ? "0.5rem" : "1rem"; // Espacement entre les hacks
+  const gridHeight = isMobile ? "90%" : "65%"; // Sur mobile, plus d'espace en bas pour afficher le dernier hack
 
-  // Pour le logo, on enveloppe désormais l'intégralité du conteneur dans un Link,
-  // afin que tout le logo soit cliquable et renvoie vers /about.
   const logoContainerStyle = {
     position: "absolute" as const,
     top: "1rem",
@@ -193,12 +189,11 @@ export default function HacksOfCare() {
         </video>
       </div>
 
-      {/* Logo et lien vers la page about : le conteneur complet est cliquable */}
+      {/* Logo et lien vers la page about : tout le logo est cliquable */}
       <Link href="/about" legacyBehavior>
         <a style={{ textDecoration: "none" }}>
           <div style={logoContainerStyle}>
             <img src="/hacksofcare_logo.png" alt="Hacks of Care Logo" style={{ width: "100%", height: "auto" }} />
-            {/* Vous pouvez éventuellement supprimer le "*" si tout le logo est cliquable */}
           </div>
         </a>
       </Link>
@@ -222,7 +217,7 @@ export default function HacksOfCare() {
             gridTemplateColumns: `repeat(${columns}, 1fr)`,
             gap: gridGap,
             overflowY: "auto",
-            paddingBottom: "2rem", // Espace en bas pour que le dernier élément soit bien visible
+            paddingBottom: "4rem", // Plus d'espace en bas sur mobile
             scrollbarWidth: "none",
             msOverflowStyle: "none",
             WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 90%, transparent 100%)",
@@ -246,7 +241,7 @@ export default function HacksOfCare() {
             gridTemplateColumns: `repeat(${columns}, 1fr)`,
             gap: gridGap,
             overflowY: "auto",
-            paddingBottom: "2rem", // Ajout d'espace en bas sur desktop aussi, au besoin
+            paddingBottom: "2rem",
             scrollbarWidth: "none",
             msOverflowStyle: "none",
             WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 90%, transparent 100%)",

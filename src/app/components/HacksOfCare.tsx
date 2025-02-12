@@ -161,7 +161,7 @@ export default function HacksOfCare() {
   if (!isClient) return null;
 
   const isMobile = columns === 1;
-  const gridTop = isMobile ? "10%" : "30%"; // Espace entre le logo et la grille
+  const gridTop = isMobile ? "20%" : "30%"; // Espace entre le logo et la grille
   const gridGap = isMobile ? "0.5rem" : "1rem"; // Espacement entre les hacks
   const gridHeight = isMobile ? "90%" : "65%"; // Sur mobile, plus d'espace en bas pour afficher le dernier hack
 
@@ -241,7 +241,7 @@ export default function HacksOfCare() {
             gridTemplateColumns: `repeat(${columns}, 1fr)`,
             gap: gridGap,
             overflowY: "auto",
-            paddingBottom: "2rem",
+            paddingBottom: "4rem",
             scrollbarWidth: "none",
             msOverflowStyle: "none",
             WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 90%, transparent 100%)",

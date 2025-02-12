@@ -159,12 +159,12 @@ export default function HacksOfCare() {
   if (!isClient) return null;
 
   const isMobile = columns === 1;
-  const gridTop = isMobile ? "20%" : "30%"; // Modifiez cette valeur pour ajuster l'espace entre le logo et la grille
-  const gridGap = isMobile ? "0.5rem" : "1rem"; // Pour réduire l'espace entre les hacks, modifiez cette valeur sur mobile
+  const gridTop = isMobile ? "10%" : "30%"; // Espace entre le logo et la grille
+  const gridGap = isMobile ? "0.5rem" : "1rem"; // Espacement entre les hacks
   const gridHeight = isMobile ? "80%" : "65%";
 
   const logoContainerStyle = {
-    position: "absolute" as "absolute",
+    position: "absolute",
     top: "1rem",
     left: "50%",
     transform: "translateX(-50%)",
@@ -184,21 +184,21 @@ export default function HacksOfCare() {
       {/* Logo et lien vers la page explicative */}
       <div style={logoContainerStyle}>
         <img src="/hacksofcare_logo.png" alt="Hacks of Care Logo" style={{ width: "100%", height: "auto" }} />
-<Link
-  href="/about"
-  style={{
-    position: "absolute",
-    right: "-3rem",
-    top: "50%",
-    transform: "translateY(-50%)",
-    color: "white",
-    fontSize: isMobile ? "2rem" : "5rem", // Plus gros sur desktop
-    textDecoration: "none",
-  }}
->
-  *
-</Link>
-
+        <Link href="/about" legacyBehavior>
+          <a
+            style={{
+              position: "absolute",
+              right: "-3rem",
+              top: "50%",
+              transform: "translateY(-50%)",
+              color: "white",
+              fontSize: isMobile ? "2rem" : "5rem", // Sur desktop, le * est plus gros
+              textDecoration: "none",
+            }}
+          >
+            *
+          </a>
+        </Link>
       </div>
 
       {isMobile ? (

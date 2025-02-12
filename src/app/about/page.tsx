@@ -20,10 +20,7 @@ export default function About() {
       {/* Contenu principal */}
       <main className="main">
         <p className="paragraph">
-          Hacks of care est une boite à outils collaborative pour
-          s'hacktiver écologiquement. Elle se concrétise en une liste d’action à s’approprier,
-          partager et bonifier pour s’aider collectivement et se mettre à l’action face à la
-          réalité de la situation écologique.
+          Hacks of care est une boite à outils collaborative pour s'hacktiver écologiquement. Elle se concrétise en une liste d’action à s’approprier, partager et bonifier pour s’aider collectivement et se mettre à l’action face à la réalité de la situation écologique.
         </p>
         <p className="paragraph">
           L'idée est issue du projet de recherche à la maitrise de l'artiste{" "}
@@ -37,15 +34,12 @@ export default function About() {
           </a>{" "}
           intitulé : 
           <em>
-            Machines sensibles, inventions queer : une approche hacktiviste et écoféministe de l'art
-            numérique
+            Machines sensibles, inventions queer : une approche hacktiviste et écoféministe de l'art numérique
           </em>
-          , et constitue une tentative de réponse à la question : comment continuer à créer avec
-          les technologies étant donné la situation écologique actuelle ?
+          , et constitue une tentative de réponse à la question : comment continuer à créer avec les technologies étant donné la situation écologique actuelle ?
         </p>
         <p className="paragraph">
-          Si vous êtes artiste, hacker, théoricien·ne de l'art, ou simplement inspiré·e par la
-          question, vous pouvez contribuer à faire grandir la liste en envoyant vos idées à hacksofcare@gmail.com.
+          Si vous êtes artiste, hacker, théoricien·ne de l'art, ou simplement inspiré·e par la question, vous pouvez contribuer à faire grandir la liste en envoyant vos idées à hacksofcare@gmail.com.
         </p>
       </main>
 

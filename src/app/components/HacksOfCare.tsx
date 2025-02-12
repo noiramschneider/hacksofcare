@@ -1,4 +1,3 @@
-// src/app/components/HacksOfCare.tsx
 "use client"; // Doit être placé tout en haut !
 
 import { useEffect, useState } from "react";
@@ -84,11 +83,11 @@ const hacks = [
 ];
 
 function HackCard({ hack, fontSize, autoReveal }: { hack: string; fontSize: string; autoReveal: boolean }) {
-  // Déclaration inconditionnelle du hook
+  // Appel inconditionnel du hook
   const [revealed, setRevealed] = useState(false);
 
   if (autoReveal) {
-    // Sur mobile : révélation automatique dès que l'élément est dans le viewport
+    // Mode mobile : révélation automatique dès que l'élément est dans le viewport
     return (
       <motion.div
         variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
@@ -106,7 +105,7 @@ function HackCard({ hack, fontSize, autoReveal }: { hack: string; fontSize: stri
       </motion.div>
     );
   } else {
-    // Sur desktop : révélation au survol
+    // Mode desktop : révélation au survol
     return (
       <div
         onMouseEnter={() => {
@@ -161,10 +160,15 @@ export default function HacksOfCare() {
   if (!isClient) return null;
 
   const isMobile = columns === 1;
-  const gridTop = isMobile ? "20%" : "30%"; // Espace entre le logo et la grille
-  const gridGap = isMobile ? "0.5rem" : "1rem"; // Espacement entre les hacks
-  const gridHeight = isMobile ? "80%" : "65%";
+  // Pour ajuster l'espace entre le logo et la grille, modifiez gridTop
+  const gridTop = isMobile ? "10%" : "30%";
+  // Pour réduire l'espace entre les hacks sur mobile
+  const gridGap = isMobile ? "0.5rem" : "1rem";
+  // Pour ajouter de l'espace en bas afin que "Participer :" soit bien affiché
+  const gridHeight = isMobile ? "90%" : "65%";
 
+  // Pour le logo, on enveloppe désormais l'intégralité du conteneur dans un Link,
+  // afin que tout le logo soit cliquable et renvoie vers /about.
   const logoContainerStyle = {
     position: "absolute" as const,
     top: "1rem",
@@ -178,30 +182,26 @@ export default function HacksOfCare() {
     <div style={{ position: "relative", width: "100%", minHeight: "100vh" }}>
       {/* Vidéo de fond */}
       <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}>
-        <video style={{ width: "100%", height: "100%", objectFit: "cover" }} autoPlay loop muted playsInline>
+        <video
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
           <source src="/gradientvid2.mp4" type="video/mp4" />
         </video>
       </div>
 
-      {/* Logo et lien vers la page explicative */}
-      <div style={logoContainerStyle}>
-        <img src="/hacksofcare_logo.png" alt="Hacks of Care Logo" style={{ width: "100%", height: "auto" }} />
-        <Link href="/about" legacyBehavior>
-          <a
-            style={{
-              position: "absolute",
-              right: "-3rem",
-              top: "50%",
-              transform: "translateY(-50%)",
-              color: "white",
-              fontSize: isMobile ? "2rem" : "5rem", // Sur desktop, le * est plus gros
-              textDecoration: "none",
-            }}
-          >
-            *
-          </a>
-        </Link>
-      </div>
+      {/* Logo et lien vers la page about : le conteneur complet est cliquable */}
+      <Link href="/about" legacyBehavior>
+        <a style={{ textDecoration: "none" }}>
+          <div style={logoContainerStyle}>
+            <img src="/hacksofcare_logo.png" alt="Hacks of Care Logo" style={{ width: "100%", height: "auto" }} />
+            {/* Vous pouvez éventuellement supprimer le "*" si tout le logo est cliquable */}
+          </div>
+        </a>
+      </Link>
 
       {isMobile ? (
         <motion.div
@@ -222,6 +222,7 @@ export default function HacksOfCare() {
             gridTemplateColumns: `repeat(${columns}, 1fr)`,
             gap: gridGap,
             overflowY: "auto",
+            paddingBottom: "2rem", // Espace en bas pour que le dernier élément soit bien visible
             scrollbarWidth: "none",
             msOverflowStyle: "none",
             WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 90%, transparent 100%)",
@@ -245,6 +246,7 @@ export default function HacksOfCare() {
             gridTemplateColumns: `repeat(${columns}, 1fr)`,
             gap: gridGap,
             overflowY: "auto",
+            paddingBottom: "2rem", // Ajout d'espace en bas sur desktop aussi, au besoin
             scrollbarWidth: "none",
             msOverflowStyle: "none",
             WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 90%, transparent 100%)",

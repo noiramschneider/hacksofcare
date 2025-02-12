@@ -4,6 +4,14 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import localFont from "next/font/local";
+
+// Import de la police Steps-Mono depuis public/fonts/Steps-Mono.otf
+const stepsMono = localFont({
+  src: "/fonts/Steps-Mono.otf",
+  variable: "--font-steps-mono",
+  display: "swap",
+});
 
 const hacks = [
   "Recycler les technologies par la pratique artistique",
@@ -83,18 +91,25 @@ const hacks = [
   "Participer :",
 ];
 
-function HackCard({ hack, fontSize, autoReveal }: { hack: string; fontSize: string; autoReveal: boolean }) {
-  // Appel inconditionnel du hook useState
+interface HackCardProps {
+  hack: string;
+  fontSize: string;
+  autoReveal: boolean;
+}
+
+function HackCard({ hack, fontSize, autoReveal }: HackCardProps) {
+  // Déclaration inconditionnelle du hook useState
   const [revealed, setRevealed] = useState(false);
 
   if (autoReveal) {
-    // Mode mobile : révélation automatique dès que l'élément est visible
+    // Mode mobile : révélation automatique dès que l'élément est dans le viewport
     return (
       <motion.div
         variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
         style={{ cursor: "pointer", padding: "1rem", textAlign: "center" }}
       >
         <span
+          className={stepsMono.className}
           style={{
             color: "white",
             fontSize: fontSize,
@@ -115,6 +130,7 @@ function HackCard({ hack, fontSize, autoReveal }: { hack: string; fontSize: stri
         style={{ cursor: "pointer", padding: "1rem", textAlign: "center" }}
       >
         <motion.span
+          className={stepsMono.className}
           initial={{ opacity: 0 }}
           animate={{ opacity: revealed ? 1 : 0 }}
           transition={{ duration: 0.5 }}
@@ -138,7 +154,6 @@ export default function HacksOfCare() {
 
   useEffect(() => {
     setIsClient(true);
-
     const updateLayout = () => {
       const width = window.innerWidth;
       if (width < 600) {
@@ -152,7 +167,6 @@ export default function HacksOfCare() {
         setFontSize("2rem");
       }
     };
-
     updateLayout();
     window.addEventListener("resize", updateLayout);
     return () => window.removeEventListener("resize", updateLayout);
@@ -161,9 +175,9 @@ export default function HacksOfCare() {
   if (!isClient) return null;
 
   const isMobile = columns === 1;
-  const gridTop = isMobile ? "20%" : "30%"; // Espace entre le logo et la grille
+  const gridTop = isMobile ? "10%" : "30%"; // Espace entre le logo et la grille
   const gridGap = isMobile ? "0.5rem" : "1rem"; // Espacement entre les hacks
-  const gridHeight = isMobile ? "90%" : "65%"; // Sur mobile, plus d'espace en bas pour afficher le dernier hack
+  const gridHeight = isMobile ? "90%" : "65%"; // Sur mobile, plus d'espace en bas
 
   const logoContainerStyle = {
     position: "absolute" as const,
@@ -189,7 +203,7 @@ export default function HacksOfCare() {
         </video>
       </div>
 
-      {/* Logo et lien vers la page about : tout le logo est cliquable */}
+      {/* Logo cliquable qui enveloppe entièrement le conteneur du logo */}
       <Link href="/about" legacyBehavior>
         <a style={{ textDecoration: "none" }}>
           <div style={logoContainerStyle}>

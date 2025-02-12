@@ -161,7 +161,7 @@ export default function HacksOfCare() {
   if (!isClient) return null;
 
   const isMobile = columns === 1;
-  const gridTop = isMobile ? "10%" : "30%"; // Espace entre le logo et la grille
+  const gridTop = isMobile ? "20%" : "30%"; // Espace entre le logo et la grille
   const gridGap = isMobile ? "0.5rem" : "1rem"; // Espacement entre les hacks
   const gridHeight = isMobile ? "80%" : "65%";
 

@@ -84,8 +84,11 @@ const hacks = [
 ];
 
 function HackCard({ hack, fontSize, autoReveal }: { hack: string; fontSize: string; autoReveal: boolean }) {
+  // Déclaration inconditionnelle du hook
+  const [revealed, setRevealed] = useState(false);
+
   if (autoReveal) {
-    // Sur mobile : révélation automatique quand l'élément est visible
+    // Sur mobile : révélation automatique dès que l'élément est dans le viewport
     return (
       <motion.div
         variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
@@ -104,7 +107,6 @@ function HackCard({ hack, fontSize, autoReveal }: { hack: string; fontSize: stri
     );
   } else {
     // Sur desktop : révélation au survol
-    const [revealed, setRevealed] = useState(false);
     return (
       <div
         onMouseEnter={() => {
@@ -164,7 +166,7 @@ export default function HacksOfCare() {
   const gridHeight = isMobile ? "80%" : "65%";
 
   const logoContainerStyle = {
-    position: "absolute",
+    position: "absolute" as const,
     top: "1rem",
     left: "50%",
     transform: "translateX(-50%)",

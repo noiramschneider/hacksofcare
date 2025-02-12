@@ -1,5 +1,4 @@
 // src/app/about/page.tsx
-//
 "use client";
 
 import Link from "next/link";
@@ -7,7 +6,7 @@ import Link from "next/link";
 export default function About() {
   return (
     <div className="container">
-      {/* En-tête avec le logo cliquable pour revenir à la page d'accueil */}
+      {/* En-tête avec le logo cliquable pour revenir à la page d&#39;accueil */}
       <header className="header">
         <Link href="/">
           <img
@@ -21,10 +20,12 @@ export default function About() {
       {/* Contenu principal */}
       <main className="main">
         <p className="paragraph">
-          Hacks of care est une boite à outils collaborative pour s&#39hacktiver écologiquement. Elle se concrétise en une liste d&#39action à s&#39approprier, partager et bonifier pour s&#39aider collectivement et se mettre à l&#39action face à la réalité de la situation écologique.
+          Hacks of care est une boite &#39;outils collaborative pour s&#39;hacktiver
+          écologiquement. Elle se concrétise en une liste d’action &#39;approprier, partager et
+          bonifier pour s&#39;aider collectivement et se mettre &#39;l&#39;action face &#39;la réalité de la situation écologique.
         </p>
         <p className="paragraph">
-          L&#39idée est issue du projet de recherche à la maitrise de l&#39artiste{" "}
+          L&#39;idée est issue du projet de recherche &#39;la maitrise de l&#39;artiste{" "}
           <a
             href="https://schneidermarion.net"
             target="_blank"
@@ -33,14 +34,17 @@ export default function About() {
           >
             Marion Schneider
           </a>{" "}
-          intitulé : 
+          intitulé :{" "}
           <em>
-            Machines sensibles, inventions queer : une approche hacktiviste et écoféministe de l&#39art numérique
+            Machines sensibles, inventions queer : une approche hacktiviste et écoféministe de l&#39;art
+            numérique
           </em>
-          , et constitue une tentative de réponse à la question : comment continuer à créer avec les technologies étant donné la situation écologique actuelle ?
+          , et constitue une tentative de réponse à la question : comment continuer &#39;créer avec
+          les technologies étant donné la situation écologique actuelle ?
         </p>
         <p className="paragraph">
-          Si vous êtes artiste, hacker, théoricien·ne de l&#39art, ou simplement inspiré·e par la question, vous pouvez contribuer à faire grandir la liste en envoyant vos idées à hacksofcare@gmail.com.
+          Si vous êtes artiste, hacker, théoricien·ne de l&#39;art, ou simplement inspiré·e par la
+          question, vous pouvez contribuer à faire grandir la liste en envoyant vos idées à hacksofcare@gmail.com.
         </p>
       </main>
 

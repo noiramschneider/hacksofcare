@@ -17,8 +17,7 @@ export default function About() {
       className={`container ${stepsMono.className}`}
       style={{ fontFamily: stepsMono.style.fontFamily }}
     >
-      {/* En-tête avec le logo vidéo cliquable pour revenir à la page d'accueil,
-          et l'icône de téléchargement PDF positionnée de façon relative au logo */}
+      {/* En-tête avec le bloc logo + icône PDF centré horizontalement */}
       <header className="header">
         <div className="logo-container">
           <Link href="/">
@@ -62,41 +61,42 @@ export default function About() {
             Machines sensibles, inventions queer : une approche hacktiviste et écoféministe de l&#39;art numérique
           </em>
           , et constitue une tentative de réponse à la question : comment continuer à créer avec les technologies 
-          étant donné la situation écologique actuelle ?
+          étant donné la situation écologique actuelle?
         </p>
         <p className="paragraph">
-          Si vous êtes artiste, hacker, théoricien·ne de l&#39;art, ou simplement inspiré·e par la question, vous pouvez contribuer 
-          à faire grandir la liste en envoyant vos idées à hacksofcare@gmail.com.
+          Si vous êtes artiste, hacker, théoricien·ne de l&#39;art, ou simplement inspiré·e par la question, 
+          vous pouvez contribuer à faire grandir la liste en envoyant vos idées à hacksofcare@gmail.com.
         </p>
       </main>
 
       <style jsx>{`
         .container {
-          background-color: #f0f0f0; /* Fond gris clair */
+          background-color: #f0f0f0;
           min-height: 100vh;
           padding: 2rem;
         }
         .header {
           margin-bottom: 2rem;
-          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
         .logo-container {
           position: relative;
-          display: inline-block; /* Pour que la taille du conteneur corresponde à celle du logo */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
         }
         .logo {
           cursor: pointer;
-          width: 750px; /* Taille fixe sur desktop */
+          width: 750px;
         }
         .pdf-link {
-          position: absolute;
-          top: 50%;
-          right: -5rem; /* Ajustez cette valeur pour positionner l'icône vers la gauche du bord du logo */
-          transform: translateY(-50%);
           text-decoration: none;
         }
         .pdf-icon {
-          width: 40px; /* Taille de l'icône sur desktop */
+          width: 40px;
           height: auto;
           filter: grayscale(100%);
         }
@@ -121,8 +121,8 @@ export default function About() {
           .pdf-icon {
             width: 30px;
           }
-          .pdf-link {
-            right: -1rem; /* Ajustez pour mobile si besoin */
+          .logo-container {
+            gap: 0.5rem;
           }
         }
       `}</style>
